@@ -43,6 +43,12 @@ public class CacheConfiguration {
             cm.createCache(com.rama.admin.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(com.rama.admin.domain.PersistentToken.class.getName(), jcacheConfiguration);
             cm.createCache(com.rama.admin.domain.User.class.getName() + ".persistentTokens", jcacheConfiguration);
+            cm.createCache(com.rama.admin.domain.Content.class.getName(), jcacheConfiguration);
+            cm.createCache(com.rama.admin.domain.Content.class.getName() + ".galleries", jcacheConfiguration);
+            cm.createCache(com.rama.admin.domain.ImageContent.class.getName(), jcacheConfiguration);
+            cm.createCache(com.rama.admin.domain.MovieContent.class.getName(), jcacheConfiguration);
+            cm.createCache(com.rama.admin.domain.MovieContentDetails.class.getName(), jcacheConfiguration);
+            cm.createCache(com.rama.admin.domain.ContentRules.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

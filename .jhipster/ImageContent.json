@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "content",
+            "otherEntityName": "content",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "caption",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "contentPath",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "creationDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "updateDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20171028121117",
+    "entityTableName": "image_content",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

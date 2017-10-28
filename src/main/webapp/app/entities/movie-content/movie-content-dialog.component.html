@@ -1,0 +1,67 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myMovieContentLabel">Create or edit a Movie Content</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!movieContent.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="movieContent.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="movieContent.name"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="movieContent.description"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_contentPath">Content Path</label>
+            <input type="text" class="form-control" name="contentPath" id="field_contentPath"
+                [(ngModel)]="movieContent.contentPath"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_creationTime">Creation Time</label>
+            <div class="input-group">
+                <input id="field_creationTime" type="text" class="form-control" name="creationTime" ngbDatepicker  #creationTimeDp="ngbDatepicker" [(ngModel)]="movieContent.creationTime"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="creationTimeDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_updateDate">Update Date</label>
+            <div class="input-group">
+                <input id="field_updateDate" type="text" class="form-control" name="updateDate" ngbDatepicker  #updateDateDp="ngbDatepicker" [(ngModel)]="movieContent.updateDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="updateDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_details">Details</label>
+            <select class="form-control" id="field_details" name="details" [(ngModel)]="movieContent.details">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="movieContentDetailsOption.id === movieContent.details?.id ? movieContent.details : movieContentDetailsOption" *ngFor="let movieContentDetailsOption of details; trackBy: trackMovieContentDetailsById">{{movieContentDetailsOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

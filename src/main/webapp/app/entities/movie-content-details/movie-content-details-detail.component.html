@@ -1,0 +1,33 @@
+
+<div *ngIf="movieContentDetails">
+    <h2><span>Movie Content Details</span> {{movieContentDetails.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Director</span></dt>
+        <dd>
+            <span>{{movieContentDetails.director}}</span>
+        </dd>
+        <dt><span>Duration</span></dt>
+        <dd>
+            <span>{{movieContentDetails.duration}}</span>
+        </dd>
+        <dt><span>Release Date</span></dt>
+        <dd>
+            <span>{{movieContentDetails.releaseDate | date:'mediumDate'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'movie-content-details/'+ movieContentDetails.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

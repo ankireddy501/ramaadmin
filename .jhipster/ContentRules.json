@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "content",
+            "otherEntityName": "content",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "rules"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "lifeTime",
+            "fieldType": "LifeTime",
+            "fieldValues": "UNLIMITED"
+        },
+        {
+            "fieldName": "validity",
+            "fieldType": "Validity",
+            "fieldValues": "UNLIMITED"
+        },
+        {
+            "fieldName": "cost",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171028121120",
+    "entityTableName": "content_rules",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

@@ -1,0 +1,41 @@
+
+<div *ngIf="content">
+    <h2><span>Content</span> {{content.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Type</span></dt>
+        <dd>
+            <span>{{content.type}}</span>
+        </dd>
+        <dt><span>Subscription Type</span></dt>
+        <dd>
+            <span>{{content.subscriptionType}}</span>
+        </dd>
+        <dt><span>Video</span></dt>
+        <dd>
+            <div *ngIf="content.video">
+                <a [routerLink]="['/movie-content', content.video?.id]">{{content.video?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Rules</span></dt>
+        <dd>
+            <div *ngIf="content.rules">
+                <a [routerLink]="['/content-rules', content.rules?.id]">{{content.rules?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'content/'+ content.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

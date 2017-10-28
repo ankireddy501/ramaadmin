@@ -1,0 +1,60 @@
+<div>
+    <h2>
+        <span>Content Rules</span>
+        <button class="btn btn-primary float-right jh-create-entity create-content-rules" [routerLink]="['/', { outlets: { popup: ['content-rules-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Content Rules
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="contentRules">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Life Time</span></th>
+            <th><span>Validity</span></th>
+            <th><span>Cost</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let contentRules of contentRules ;trackBy: trackId">
+                <td><a [routerLink]="['../content-rules', contentRules.id ]">{{contentRules.id}}</a></td>
+                <td>{{contentRules.lifeTime}}</td>
+                <td>{{contentRules.validity}}</td>
+                <td>{{contentRules.cost}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../content-rules', contentRules.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'content-rules/'+ contentRules.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'content-rules/'+ contentRules.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

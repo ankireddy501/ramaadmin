@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "details",
+            "otherEntityName": "movieContentDetails",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "movieContent"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "contentPath",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "creationTime",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "updateDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20171028121118",
+    "entityTableName": "movie_content",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

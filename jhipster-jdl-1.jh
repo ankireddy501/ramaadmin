@@ -8,28 +8,29 @@ enum ContentType{
 	VIDEO, IMAGE
 }
 enum LifeTime{
-	60,90,100,UNLIMITED
+        UNLIMITED
 }
 
 enum Validity{
-	3,6,9,12,UNLIMTED
+	UNLIMITED
 }
 
 entity Content{
-	type ContentType
-    subscription SubscriptionType
+    type ContentType,
+    subscriptionType SubscriptionType
 }
 
 entity ImageContent{
-	id String,
+    id String,
     name String,
+    caption Boolean,
     contentPath String,
     creationDate LocalDate,
     updateDate LocalDate
 }
 
 entity MovieContent{
-	id String,
+    id String,
     name String,
     description String,
     contentPath String,
@@ -38,23 +39,19 @@ entity MovieContent{
 }
 
 entity MovieContentDetails{
-	id String,
+    id String,
     director String,
     duration Integer,
     releaseDate LocalDate
 }
 entity ContentRules{
-	lifeTime LifeTime,
-	validity Validity,
+    lifeTime LifeTime,
+    validity Validity,
     cost Integer
 }
 
-relationship OneToOne{
-	Content{caption} to ImageContent{content}
-}
-
 relationship OneToMany{
-	Content{gallery} to ImageContent
+	Content{gallery} to ImageContent{}
 }
 
 relationship OneToOne{

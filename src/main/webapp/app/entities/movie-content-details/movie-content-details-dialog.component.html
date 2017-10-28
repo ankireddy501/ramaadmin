@@ -1,0 +1,45 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myMovieContentDetailsLabel">Create or edit a Movie Content Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!movieContentDetails.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="movieContentDetails.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_director">Director</label>
+            <input type="text" class="form-control" name="director" id="field_director"
+                [(ngModel)]="movieContentDetails.director"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_duration">Duration</label>
+            <input type="number" class="form-control" name="duration" id="field_duration"
+                [(ngModel)]="movieContentDetails.duration"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_releaseDate">Release Date</label>
+            <div class="input-group">
+                <input id="field_releaseDate" type="text" class="form-control" name="releaseDate" ngbDatepicker  #releaseDateDp="ngbDatepicker" [(ngModel)]="movieContentDetails.releaseDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="releaseDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

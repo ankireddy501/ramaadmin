@@ -1,0 +1,47 @@
+
+<div *ngIf="movieContent">
+    <h2><span>Movie Content</span> {{movieContent.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{movieContent.name}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{movieContent.description}}</span>
+        </dd>
+        <dt><span>Content Path</span></dt>
+        <dd>
+            <span>{{movieContent.contentPath}}</span>
+        </dd>
+        <dt><span>Creation Time</span></dt>
+        <dd>
+            <span>{{movieContent.creationTime | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Update Date</span></dt>
+        <dd>
+            <span>{{movieContent.updateDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Details</span></dt>
+        <dd>
+            <div *ngIf="movieContent.details">
+                <a [routerLink]="['/movie-content-details', movieContent.details?.id]">{{movieContent.details?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'movie-content/'+ movieContent.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

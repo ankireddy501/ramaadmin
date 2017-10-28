@@ -1,0 +1,54 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myContentLabel">Create or edit a Content</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!content.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="content.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_type">Type</label>
+            <select class="form-control" name="type" [(ngModel)]="content.type" id="field_type" >
+                <option value="VIDEO">VIDEO</option>
+                <option value="IMAGE">IMAGE</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_subscriptionType">Subscription Type</label>
+            <select class="form-control" name="subscriptionType" [(ngModel)]="content.subscriptionType" id="field_subscriptionType" >
+                <option value="PAID">PAID</option>
+                <option value="FREE">FREE</option>
+                <option value="PREMIUM">PREMIUM</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_video">Video</label>
+            <select class="form-control" id="field_video" name="video" [(ngModel)]="content.video">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="movieContentOption.id === content.video?.id ? content.video : movieContentOption" *ngFor="let movieContentOption of videos; trackBy: trackMovieContentById">{{movieContentOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_rules">Rules</label>
+            <select class="form-control" id="field_rules" name="rules" [(ngModel)]="content.rules">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="contentRulesOption.id === content.rules?.id ? content.rules : contentRulesOption" *ngFor="let contentRulesOption of rules; trackBy: trackContentRulesById">{{contentRulesOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

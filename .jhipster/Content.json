@@ -1,0 +1,44 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "video",
+            "otherEntityName": "movieContent",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "content"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "rules",
+            "otherEntityName": "contentRules",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "content"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "gallery",
+            "otherEntityName": "imageContent",
+            "otherEntityRelationshipName": "content"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "type",
+            "fieldType": "ContentType",
+            "fieldValues": "VIDEO,IMAGE"
+        },
+        {
+            "fieldName": "subscriptionType",
+            "fieldType": "SubscriptionType",
+            "fieldValues": "PAID,FREE,PREMIUM"
+        }
+    ],
+    "changelogDate": "20171028121116",
+    "entityTableName": "content",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

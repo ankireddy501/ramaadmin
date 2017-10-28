@@ -1,0 +1,23 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "director",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "duration",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "releaseDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20171028121119",
+    "entityTableName": "movie_content_details",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

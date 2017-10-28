@@ -1,0 +1,60 @@
+<div>
+    <h2>
+        <span>Movie Content Details</span>
+        <button class="btn btn-primary float-right jh-create-entity create-movie-content-details" [routerLink]="['/', { outlets: { popup: ['movie-content-details-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Movie Content Details
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="movieContentDetails">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Director</span></th>
+            <th><span>Duration</span></th>
+            <th><span>Release Date</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let movieContentDetails of movieContentDetails ;trackBy: trackId">
+                <td><a [routerLink]="['../movie-content-details', movieContentDetails.id ]">{{movieContentDetails.id}}</a></td>
+                <td>{{movieContentDetails.director}}</td>
+                <td>{{movieContentDetails.duration}}</td>
+                <td>{{movieContentDetails.releaseDate | date:'mediumDate'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../movie-content-details', movieContentDetails.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'movie-content-details/'+ movieContentDetails.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'movie-content-details/'+ movieContentDetails.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
