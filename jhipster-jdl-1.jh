@@ -1,0 +1,70 @@
+
+
+enum SubscriptionType{
+	PAID, FREE, PREMIUM
+}
+
+enum ContentType{
+	VIDEO, IMAGE
+}
+enum LifeTime{
+	60,90,100,UNLIMITED
+}
+
+enum Validity{
+	3,6,9,12,UNLIMTED
+}
+
+entity Content{
+	type ContentType
+    subscription SubscriptionType
+}
+
+entity ImageContent{
+	id String,
+    name String,
+    contentPath String,
+    creationDate LocalDate,
+    updateDate LocalDate
+}
+
+entity MovieContent{
+	id String,
+    name String,
+    description String,
+    contentPath String,
+    creationTime LocalDate,
+    updateDate LocalDate
+}
+
+entity MovieContentDetails{
+	id String,
+    director String,
+    duration Integer,
+    releaseDate LocalDate
+}
+entity ContentRules{
+	lifeTime LifeTime,
+	validity Validity,
+    cost Integer
+}
+
+relationship OneToOne{
+	Content{caption} to ImageContent{content}
+}
+
+relationship OneToMany{
+	Content{gallery} to ImageContent
+}
+
+relationship OneToOne{
+	Content{video} to MovieContent
+}
+
+relationship OneToOne{
+	MovieContent{details} to MovieContentDetails
+}
+
+relationship OneToOne {
+	Content{rules} to ContentRules{content}
+}
