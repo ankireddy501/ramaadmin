@@ -30,25 +30,7 @@ Add the `help` flag on any command to see how you can use it. For example, `yarn
 
 The `yarn run` command will list all of the scripts available to run for this project.
 
-### Service workers
 
-Service workers are commented by default, to enable them please uncomment the following code.
-
-* The service worker registering script in index.html
-```
-<script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker
-        .register('./sw.js')
-        .then(function() { console.log('Service Worker Registered'); });
-    }
-</script>
-```
-* The copy file option in webpack-common.js
-```js
-{ from: './src/main/webapp/sw.js', to: 'sw.js' },
-```
-Note: Add the respective scripts/assets in `sw.js` that is needed to be cached.
 
 ### Managing dependencies
 
